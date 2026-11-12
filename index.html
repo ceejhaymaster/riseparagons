@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>RISE PARAGONS</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+  body{background:radial-gradient(circle at 15% 0%,#3b1a00 0,#0a0a0a 45%),#0a0a0a}
+  .glass{background:rgba(255,255,255,.04);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08)}
+  .gold-text{background:linear-gradient(90deg,#ffffff,#f97316);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .btn-grad{background:linear-gradient(135deg,#f59e0b,#ea580c);color:#000}
+  .logo-grad{background:linear-gradient(135deg,#fbbf24,#ea580c)}
+  input[type=range]{accent-color:#f59e0b}
+  .row-on{background:rgba(245,158,11,.12);box-shadow:inset 3px 0 0 #f59e0b,0 0 20px rgba(245,158,11,.15)}
+  button,input,footer{touch-action:manipulation;-webkit-tap-highlight-color:transparent;user-select:none}
+  footer button{transition:transform .15s,color .2s,filter .2s}
+  footer button:hover{transform:scale(1.12);color:#fbbf24;filter:drop-shadow(0 0 6px rgba(249,115,22,.7))}
+  footer button:focus{outline:none}
+  footer button:focus-visible{box-shadow:0 0 0 2px rgba(251,191,36,.6),0 0 14px rgba(234,88,12,.7)}
+  footer button:active{filter:drop-shadow(0 0 8px #f97316) drop-shadow(0 0 3px #fbbf24)}
+  #vol{-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;--p:80%;background:linear-gradient(90deg,#f97316 var(--p),#3f3f46 var(--p));cursor:pointer}
+  #vol::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #f97316;transition:box-shadow .2s,transform .2s}
+  #vol::-moz-range-thumb{width:14px;height:14px;border:0;border-radius:50%;background:#fbbf24;box-shadow:0 0 10px #f97316;transition:box-shadow .2s,transform .2s}
+  #vol:active::-webkit-slider-thumb,#vol:focus-visible::-webkit-slider-thumb{box-shadow:0 0 18px #f97316,0 0 30px #fbbf24;transform:scale(1.25)}
+  #vol:active::-moz-range-thumb,#vol:focus-visible::-moz-range-thumb{box-shadow:0 0 18px #f97316,0 0 30px #fbbf24;transform:scale(1.25)}
+  [data-view]{transition:transform .2s,box-shadow .2s,background-color .2s}
+  [data-view]:hover{transform:translateX(4px)}
+  [data-view][aria-current="true"]{box-shadow:inset 3px 0 0 #f59e0b,0 0 18px rgba(245,158,11,.25)}
+  .drop-target{box-shadow:inset 0 2px 0 #f59e0b}
+  .ember{position:fixed;bottom:-12px;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,#fff8 0,#fde68a 35%,#f97316 65%,transparent 72%);pointer-events:none;z-index:-10;opacity:0;animation:rise var(--d) linear var(--t) infinite}
+  @keyframes rise{0%{transform:translate(0,0) scale(1);opacity:0}10%{opacity:.9}100%{transform:translate(var(--x),-110vh) scale(.3);opacity:0}}
+</style>
+</head>
+<body class="min-h-screen text-white font-sans antialiased pb-44">
+
+<!-- Header -->
+<header class="sticky top-0 z-30 bg-black/40 backdrop-blur-xl border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center">
+    <div class="flex items-center gap-3">
+      <div>
+        <div class="gold-text font-bold tracking-wider leading-none" style="font-family:'Times New Roman',Times,serif"><span class="text-2xl">R</span><span class="text-sm">ISE </span><span class="text-2xl">P</span><span class="text-sm">ARAGONS</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 space-y-6">
+
+  <!-- Hero -->
+  <section class="glass rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+    <div class="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-orange-600/20 blur-3xl pointer-events-none"></div>
+    <img src="phoenix-hero.jpg" alt="" aria-hidden="true" class="absolute inset-0 w-full h-full object-cover opacity-35 pointer-events-none">
+    <span class="inline-block text-[11px] tracking-[.25em] font-semibold text-amber-300 border border-amber-400/40 rounded-full px-3 py-1">OFFICIAL ANTHEM VAULT</span>
+    <h1 class="mt-4 text-4xl sm:text-6xl font-bold tracking-tight gold-text" style="font-family:'Times New Roman',Times,serif">RISE PARAGONS</h1>
+    <h3 class="mt-2 text-lg font-semibold text-amber-300" style="font-family:'Times New Roman',Times,serif">From Squad To Family</h3>
+    <p class="mt-2 text-white font-medium max-w-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]" style="font-family:'Times New Roman',Times,serif">The official sound sanctuary for Rise Paragons, Aragon Squad, and Crown Squad. Keeping our family’s music alive.</p>
+    <div class="mt-6 flex flex-wrap items-center gap-4">
+      <button id="playAll" class="btn-grad px-6 py-3 rounded-full font-bold shadow-lg shadow-orange-600/30 hover:scale-105 transition"><svg class="inline-block align-middle mr-1.5" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>Play</button>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6">
+
+    <!-- Left panel -->
+    <aside class="space-y-4">
+      <div class="glass rounded-2xl p-3 space-y-1">
+        <button data-view="all" class="w-full flex justify-between items-center px-3 py-2.5 rounded-xl text-left hover:bg-white/5 transition">
+          <span>Rise Paragons</span><span id="cAll" class="text-xs text-white/50"></span>
+        </button>
+        <button data-view="aragon" class="w-full flex justify-between items-center px-3 py-2.5 rounded-xl text-left hover:bg-white/5 transition">
+          <span>Aragon Squad</span><span id="cAragon" class="text-xs text-white/50"></span>
+        </button>
+        <button data-view="crown" class="w-full flex justify-between items-center px-3 py-2.5 rounded-xl text-left hover:bg-white/5 transition">
+          <span>Crown Squad</span><span id="cCrown" class="text-xs text-white/50"></span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- Right panel -->
+    <section class="glass rounded-2xl p-4 sm:p-5 transition duration-300 hover:border-amber-500/30 hover:shadow-[0_0_40px_rgba(245,158,11,.12)]">
+      <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mb-4">
+        <h2 id="listTitle" class="text-xl font-bold">Playlist</h2>
+        <input id="q" type="search" placeholder="Search songs" class="w-full sm:w-64 bg-black/40 border border-white/10 rounded-xl px-4 py-2.5 outline-none focus:border-amber-400">
+      </div>
+      <ul id="list" class="divide-y divide-white/5"></ul>
+    </section>
+  </div>
+</main>
+
+<!-- Bottom player -->
+<footer class="fixed bottom-0 inset-x-0 z-40 bg-gradient-to-t from-black via-black/90 to-black/70 backdrop-blur-xl border-t border-amber-500/30 shadow-[0_-10px_40px_rgba(234,88,12,0.15)]">
+  <div class="max-w-6xl mx-auto px-4 py-3 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-3 md:gap-6 items-center">
+
+    <div class="flex items-center gap-3 min-w-0">
+      <div class="logo-grad w-12 h-12 rounded-lg shrink-0 shadow-lg shadow-orange-600/30 ring-1 ring-amber-400/40"></div>
+      <div class="min-w-0">
+        <div id="pTitle" class="gold-text font-semibold truncate">Nothing playing</div>
+        <div id="pArtist" class="text-xs text-white/50 truncate">Choose a song</div>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-2">
+      <div class="flex items-center gap-5 text-white/70">
+        <button id="shuf" class="hover:text-amber-300 transition" title="Shuffle">⤮</button>
+        <button id="prev" class="hover:text-amber-300 transition" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 5l-10 7 10 7V5z"/><rect x="4.5" y="5" width="2.5" height="14" rx="1"/></svg></button>
+        <button id="play" class="btn-grad w-12 h-12 rounded-full flex items-center justify-center font-bold shadow-lg shadow-orange-600/40 hover:scale-105 transition" title="Play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg></button>
+        <button id="next" class="hover:text-amber-300 transition" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5l10 7-10 7V5z"/><rect x="17" y="5" width="2.5" height="14" rx="1"/></svg></button>
+        <button id="rep" class="hover:text-amber-300 transition" title="Repeat">↻</button>
+      </div>
+      <div class="flex items-center gap-3 w-full text-xs text-white/50">
+        <span id="cur">0:00</span>
+        <input id="seek" type="range" min="0" max="100" step="0.1" value="0" class="flex-1">
+        <span id="dur">0:00</span>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-3 justify-end">
+      <button id="lyr" class="text-xs border border-white/15 rounded-full px-3 py-1.5 text-white/70 hover:text-amber-300 transition">Lyrics</button>
+      <button id="mute" class="text-white/50 hover:text-amber-300 active:scale-90 transition" title="Mute / Unmute" aria-label="Mute or unmute"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></button>
+      <input id="vol" type="range" min="0" max="1" step="0.01" value="0.8" class="w-24">
+    </div>
+  </div>
+  <div id="lyrics" class="hidden absolute bottom-full right-4 mb-3 w-[min(380px,92vw)] max-h-[50vh] overflow-auto glass rounded-2xl p-5 bg-black/90 whitespace-pre-line leading-relaxed text-white/80"></div>
+</footer>
+
+<div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-orange-600 px-4 py-2 rounded-lg text-sm opacity-0 transition pointer-events-none z-50"></div>
+
+<script>
+// Placeholder tracks are synthesized tones. Replace with uploaded audio files.
+let SONGS=[
+  {id:1,title:"Ember Oath",artist:"Rise Paragons",squads:["aragon"],dl:true,dur:24,notes:[220,277,330,277],lyrics:"We rose from the ash with our hands held high\nEvery spark a promise, every scar a sign\nFly, Paragon, fly through the smoke\nRise with the fire, we never broke"},
+  {id:2,title:"Crown of Embers",artist:"Rise Paragons",squads:["crown"],dl:false,dur:28,notes:[262,330,392,330],lyrics:"Wear the crown of embers, carry the flame\nNo kingdom stands still, we're never the same\nSing it to the sky, let the whole world see\nOur music, our family, forever free"},
+  {id:3,title:"Phoenix Dawn",artist:"Rise Paragons",squads:["aragon","crown"],dl:true,dur:20,notes:[196,247,294,247],lyrics:"Night breaks slowly over the hill\nWe gather together, standing still\nOut of the ashes, the morning comes\nPhoenix dawn, and the drums\nBeat for the family, beat for the flame"},
+  {id:4,title:"Gold Rain",artist:"Rise Paragons",squads:["crown"],dl:false,dur:22,notes:[330,392,440,392],lyrics:"Gold rain falling on the street tonight\nEvery brother standing in the light"},
+  {id:5,title:"Iron Brothers",artist:"Rise Paragons",squads:["aragon"],dl:true,dur:26,notes:[247,294,370,294],lyrics:"Iron brothers, hand in hand\nWe stand together, we understand"},
+  {id:6,title:"Burning Anthem",artist:"Rise Paragons",squads:["aragon","crown"],dl:false,dur:30,notes:[262,311,392,523],lyrics:"Raise the anthem, let the fire sing\nRise Paragons, our music, our king"}
+];
+
+const $=id=>document.getElementById(id);
+const PLAY_ICON='<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg>';
+const PAUSE_ICON='<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+let view="all",queue=[],idx=-1,playing=false,shuffle=false,repeat=0,pos=0;
+let timer=null,noteTimer=null,ctx=null,gain=null,noteStep=0,dragId=null;
+
+function fmt(s){s=Math.floor(s||0);return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+
+function filtered(){
+  const q=$("q").value.trim().toLowerCase();
+  return SONGS.filter(s=>(view==="all"||s.squads.includes(view))&&s.title.toLowerCase().includes(q));
+}
+
+function counts(){
+  return{all:SONGS.length,aragon:SONGS.filter(s=>s.squads.includes("aragon")).length,crown:SONGS.filter(s=>s.squads.includes("crown")).length};
+}
+
+function render(){
+  const c=counts();
+  $("cAll").textContent=c.all;$("cAragon").textContent=c.aragon;$("cCrown").textContent=c.crown;
+  $("listTitle").textContent="Playlist";
+  document.querySelectorAll("[data-view]").forEach(b=>{
+    const on=b.dataset.view===view;
+    b.classList.toggle("bg-amber-500/15",on);b.classList.toggle("text-amber-300",on);b.setAttribute("aria-current",String(on));
+  });
+  const curId=queue[idx]?queue[idx].id:null;
+  const list=filtered();
+  $("list").innerHTML=list.length?list.map(s=>{
+    const cur=s.id===curId;
+    const tags=s.squads.map(t=>`<span class="text-[10px] border border-amber-400/40 text-amber-300 rounded-full px-2 py-0.5">${t==="aragon"?"Aragon":"Crown"}</span>`).join("");
+    return `<li draggable="true" data-id="${s.id}" class="flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-white/5 transition cursor-pointer ${cur?"row-on":""}">
+      <span class="cursor-grab select-none text-white/30 hover:text-white/60" title="Drag to reorder">⋮⋮</span>
+      <div class="logo-grad w-11 h-11 rounded-lg shrink-0"></div>
+      <div class="min-w-0 flex-1">
+        <div class="font-semibold truncate ${cur?"text-amber-300":""}">${s.title}</div>
+        <div class="text-xs text-white/50 truncate">${s.artist}</div>
+      </div>
+      <div class="hidden sm:flex gap-1">${tags}</div>
+      <button data-dl="${s.id}" ${s.dl?"":"disabled"} class="hidden md:inline text-xs px-3 py-1.5 rounded-full border ${s.dl?"border-amber-400/50 text-amber-300 hover:bg-amber-500/10":"border-white/10 text-white/30 cursor-not-allowed"}">${s.dl?"Download":"Not available"}</button>
+    </li>`;
+  }).join(""):`<li class="py-10 text-center text-white/40">Walang kantang tumugma.</li>`;
+}
+
+function ensureAudio(){
+  if(ctx)return;
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  gain=ctx.createGain();gain.gain.value=$("vol").value;
+  gain.connect(ctx.destination);
+}
+
+function note(){
+  const t=queue[idx];if(!t||!ctx)return;
+  const o=ctx.createOscillator(),g=ctx.createGain();
+  o.type="sawtooth";o.frequency.value=t.notes[noteStep%t.notes.length];
+  g.gain.setValueAtTime(0.0001,ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.25,ctx.currentTime+0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+0.38);
+  o.connect(g);g.connect(gain);o.start();o.stop(ctx.currentTime+0.4);
+  noteStep++;
+}
+
+function load(i){
+  idx=i;const t=queue[i];pos=0;
+  $("pTitle").textContent=t.title;$("pArtist").textContent=t.artist;
+  $("seek").max=t.dur;$("seek").value=0;$("cur").textContent="0:00";
+  $("dur").textContent=fmt(t.dur);
+  $("lyrics").textContent=t.lyrics;
+  render();
+}
+
+function tick(){
+  pos+=0.1;const t=queue[idx];
+  $("seek").value=pos;$("cur").textContent=fmt(pos);
+  if(pos>=t.dur){
+    if(repeat===1){playAt(idx);return}
+    if(repeat===2||shuffle||idx<queue.length-1){playAt(nextIndex(true));return}
+    pause();pos=0;$("seek").value=0;$("cur").textContent="0:00";
+  }
+}
+
+function nextIndex(auto){
+  if(shuffle&&queue.length>1){let n;do{n=Math.floor(Math.random()*queue.length)}while(n===idx);return n}
+  if(idx<queue.length-1)return idx+1;
+  return repeat===2||!auto?0:idx;
+}
+
+function playAt(i){
+  ensureAudio();
+  if(ctx.state==="suspended")ctx.resume();
+  clearInterval(timer);clearInterval(noteTimer);
+  load(i);noteStep=0;
+  playing=true;$("play").innerHTML=PAUSE_ICON;
+  note();
+  noteTimer=setInterval(note,400);
+  timer=setInterval(tick,100);
+}
+
+function pause(){
+  playing=false;$("play").innerHTML=PLAY_ICON;
+  clearInterval(timer);clearInterval(noteTimer);
+}
+
+function startFrom(id){
+  queue=filtered();
+  const i=queue.findIndex(s=>s.id===id);
+  if(i>=0)playAt(i);
+}
+
+function removeSong(id){
+  const curId=queue[idx]?queue[idx].id:null;
+  SONGS=SONGS.filter(s=>s.id!==id);
+  if(curId===id){
+    pause();queue=[];idx=-1;
+    $("pTitle").textContent="Nothing playing";$("pArtist").textContent="Choose a song";
+    $("seek").value=0;$("cur").textContent="0:00";$("dur").textContent="0:00";
+  }else{
+    queue=queue.filter(s=>s.id!==id);
+    idx=queue.findIndex(s=>s.id===curId);
+  }
+  render();
+  toast("Tinanggal ang kanta (demo).");
+}
+
+function toast(msg){
+  const t=$("toast");t.textContent=msg;t.classList.remove("opacity-0");t.classList.add("opacity-100");
+  clearTimeout(toast.h);toast.h=setTimeout(()=>{t.classList.add("opacity-0");t.classList.remove("opacity-100")},2200);
+}
+
+// Navigation and search
+document.querySelectorAll("[data-view]").forEach(b=>b.onclick=()=>{view=b.dataset.view;render()});
+$("q").oninput=render;
+$("playAll").onclick=()=>{queue=[...SONGS];if(queue.length)playAt(0)};
+
+// List actions
+$("list").onclick=e=>{
+  const p=e.target.closest("[data-play]"),d=e.target.closest("[data-dl]"),x=e.target.closest("[data-del]"),li=e.target.closest("li[data-id]");
+  if(p)startFrom(+p.dataset.play);
+  else if(d&&!d.disabled)toast("Downloads go live once real audio files are uploaded.");
+  else if(x)removeSong(+x.dataset.del);
+  else if(li)startFrom(+li.dataset.id);
+};
+
+// Drag to reorder
+$("list").ondragstart=e=>{const li=e.target.closest("li[data-id]");if(li)dragId=+li.dataset.id;};
+$("list").ondragover=e=>{
+  e.preventDefault();
+  const li=e.target.closest("li[data-id]");
+  document.querySelectorAll("li.drop-target").forEach(n=>n.classList.remove("drop-target"));
+  if(li)li.classList.add("drop-target");
+};
+$("list").ondragleave=e=>{const li=e.target.closest("li[data-id]");if(li)li.classList.remove("drop-target")};
+$("list").ondrop=e=>{
+  e.preventDefault();
+  const li=e.target.closest("li[data-id]");
+  if(!li||dragId===null||dragId===+li.dataset.id)return;
+  const from=SONGS.findIndex(s=>s.id===dragId),to=SONGS.findIndex(s=>s.id===+li.dataset.id);
+  const [moved]=SONGS.splice(from,1);SONGS.splice(to,0,moved);
+  dragId=null;render();
+};
+
+// Player controls
+$("play").onclick=()=>{
+  if(!queue[idx]){queue=filtered();if(queue.length)playAt(0);return}
+  if(playing)pause();else playAt(idx);
+};
+$("next").onclick=()=>{
+  if(!queue.length){queue=filtered();if(queue.length)playAt(0);return}
+  playAt(nextIndex(false));
+};
+$("prev").onclick=()=>{
+  if(!queue.length)return;
+  if(pos>3){pos=0;$("seek").value=0;$("cur").textContent="0:00";return}
+  playAt(idx>0?idx-1:0);
+};
+$("shuf").onclick=e=>{shuffle=!shuffle;e.currentTarget.classList.toggle("text-amber-300",shuffle)};
+$("rep").onclick=e=>{
+  repeat=(repeat+1)%3;
+  e.currentTarget.classList.toggle("text-amber-300",repeat>0);
+  e.currentTarget.textContent=repeat===1?"↻¹":"↻";
+  e.currentTarget.title=["Repeat off","Repeat one","Repeat all"][repeat];
+};
+$("seek").oninput=e=>{pos=+e.target.value;$("cur").textContent=fmt(pos)};
+$("vol").oninput=e=>{if(gain)gain.gain.value=e.target.value;e.target.style.setProperty("--p",(e.target.value*100)+"%")};
+$("lyr").onclick=()=>$("lyrics").classList.toggle("hidden");
+$("mute").onclick=()=>{
+  const vol=$("vol");
+  if(+vol.value>0){window.prevVol=vol.value;vol.value=0;}
+  else{vol.value=window.prevVol||0.8;}
+  vol.dispatchEvent(new Event("input"));
+  $("mute").classList.toggle("text-red-400",+vol.value===0);
+};
+
+for(let i=0;i<40;i++){const e=document.createElement("span");e.className="ember";const s=2+Math.random()*5;e.style.cssText=`left:${Math.random()*100}vw;--s:${s}px;--d:${4+Math.random()*4}s;--t:${-Math.random()*8}s;--x:${(Math.random()-.5)*120}px`;document.body.appendChild(e)}
+
+render();
+</script>
+</body>
+</html>
